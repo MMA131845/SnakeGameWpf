@@ -1,0 +1,17 @@
+{
+  "BackgroundStyle": 2,
+  "HeadColorHex": "#90EE90",
+  "BodyColorHex": "#008000",
+  "AccentColorHex": "#0067C0",
+  "ResolutionIndex": 3,
+  "DisplayMode": 2,
+  "FpsTarget": 60,
+  "AntiAlias": true,
+  "Vsync": true,
+  "HighFpsEnabled": false,
+  "SelectedHighFpsIndex": 0,
+  "BidirectionalIpc": false,
+  "SpeedBalance": true,
+  "CustomBgEnabled": true,
+  "CustomBackgroundPath": "D:\\MMA(D2)\\我的世界图片\\嗯.png"
+}

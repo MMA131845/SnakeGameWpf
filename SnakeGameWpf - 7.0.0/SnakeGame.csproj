@@ -1,0 +1,124 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<!-- Enable pre-serialized resources for non-string resources to satisfy GenerateResource requirements -->
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<UseWPF>true</UseWPF>
+		<RootNamespace>SnakeGame</RootNamespace>
+		<AssemblyName>SnakeGame</AssemblyName>
+		<Version>7.0.0</Version>
+		<AssemblyTitle>自由贪吃蛇 WPF</AssemblyTitle>
+		<LangVersion>latest</LangVersion>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon />
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
+		<EnableDefaultPageItems>false</EnableDefaultPageItems>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<StartupObject>SnakeGame.App</StartupObject>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+	</ItemGroup>
+
+	<!-- Application -->
+	<ItemGroup>
+		<ApplicationDefinition Include="App.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<SubType>Designer</SubType>
+		</ApplicationDefinition>
+		<Compile Include="App.xaml.cs">
+			<DependentUpon>App.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="SecureStorage.cs" />
+	</ItemGroup>
+
+	<!-- 窗口 XAML -->
+	<ItemGroup>
+		<Page Include="MainWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<SubType>Designer</SubType>
+		</Page>
+		<Compile Include="MainWindow.xaml.cs">
+			<DependentUpon>MainWindow.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+
+		<Page Include="SettingsWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<SubType>Designer</SubType>
+		</Page>
+		<Compile Include="SettingsWindow.xaml.cs">
+			<DependentUpon>SettingsWindow.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+
+		<Page Include="RankingsWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<SubType>Designer</SubType>
+		</Page>
+		<Compile Include="RankingsWindow.xaml.cs">
+			<DependentUpon>RankingsWindow.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+
+		<Page Include="AchievementsWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<SubType>Designer</SubType>
+		</Page>
+		<Compile Include="AchievementsWindow.xaml.cs">
+			<DependentUpon>AchievementsWindow.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+
+		<Page Include="OnlineLobbyWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<SubType>Designer</SubType>
+		</Page>
+		<Compile Include="OnlineLobbyWindow.xaml.cs">
+			<DependentUpon>OnlineLobbyWindow.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+
+		<Page Include="TutorialWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<SubType>Designer</SubType>
+		</Page>
+		<Compile Include="TutorialWindow.xaml.cs">
+			<DependentUpon>TutorialWindow.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+
+	<!-- 纯 C# 文件 -->
+	<ItemGroup>
+		<Compile Include="Models.cs" />
+		<Compile Include="RenderResources.cs" />
+		<Compile Include="AppSettings.cs" />
+		<Compile Include="SecureStorage.cs" />
+		<Compile Include="SimpleIpcClient.cs" />
+		<Compile Include="GameEngine.cs" />
+		<Compile Include="GameNetworkClient.cs" />
+		<Compile Include="GameServer.cs" />
+		<Compile Include="GameModeBase.cs" />
+		<Compile Include="ClassicMode.cs" />
+		<Compile Include="ExtremeMode.cs" />
+		<Compile Include="TeamMode.cs" />
+		<Compile Include="TimedMode.cs" />
+		<Compile Include="ExtractionMode.cs" />
+	</ItemGroup>
+
+	<!-- 资源 -->
+	<ItemGroup>
+		<None Include="app.manifest" />
+
+	</ItemGroup>
+
+</Project>

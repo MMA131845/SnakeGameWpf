@@ -1,0 +1,58 @@
+<Window x:Class="SnakeGame.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="设置"
+        Width="900" Height="640"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F5F7"
+        FontFamily="Microsoft YaHei">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧导航 -->
+        <ListBox x:Name="NavList" Grid.Column="0"
+                 Background="White"
+                 BorderBrush="#DDDDDD" BorderThickness="1"
+                 FontSize="16"
+                 SelectedIndex="0"
+                 SelectionChanged="NavList_SelectionChanged">
+            <ListBoxItem Content="背景样式"/>
+            <ListBoxItem Content="蛇头颜色"/>
+            <ListBoxItem Content="蛇身颜色"/>
+            <ListBoxItem Content="主题色"/>
+            <ListBoxItem Content="画面设置"/>
+            <ListBoxItem Content="实验性功能"/>
+        </ListBox>
+
+        <!-- 右侧内容 -->
+        <Border Grid.Column="2" Background="White" BorderBrush="#DDDDDD" BorderThickness="1"
+                CornerRadius="8" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="PaneTitle" FontSize="22" FontWeight="Bold"
+                           Foreground="#161616" Grid.Row="0" Margin="0,0,0,16"/>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="PaneContent"/>
+                </ScrollViewer>
+
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+                    <Button x:Name="CancelBtn" Content="取消" Width="100" Height="36" Margin="0,0,10,0"
+                            Click="CancelBtn_Click"/>
+                    <Button x:Name="SaveBtn" Content="保存" Width="100" Height="36"
+                            Background="#0067C0" Foreground="White" BorderThickness="0"
+                            Click="SaveBtn_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

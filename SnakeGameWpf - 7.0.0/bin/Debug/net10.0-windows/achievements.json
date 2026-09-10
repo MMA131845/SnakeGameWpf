@@ -1,0 +1,8 @@
+{
+  "first_kill": true,
+  "kill_10": false,
+  "kill_50": false,
+  "win_10": false,
+  "survival_5min": false,
+  "capture_win": false
+}

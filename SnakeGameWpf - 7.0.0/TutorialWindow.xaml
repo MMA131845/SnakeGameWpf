@@ -1,0 +1,47 @@
+<Window x:Class="SnakeGame.TutorialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="教程" Width="640" Height="480"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent" ResizeMode="NoResize"
+        FontFamily="Microsoft YaHei" Opacity="0">
+    <Border Background="White" CornerRadius="14" Padding="28"
+            BorderBrush="#E0E0E0" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" BlurRadius="24" ShadowDepth="0" Opacity="0.25"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Row="0" LastChildFill="False">
+                <TextBlock x:Name="TitleText" DockPanel.Dock="Left"
+                           FontSize="22" FontWeight="Bold" Foreground="#161616"/>
+                <Button x:Name="CloseBtn" DockPanel.Dock="Right" Content="✕"
+                        Width="30" Height="30" FontSize="14"
+                        Background="Transparent" BorderThickness="0"
+                        Foreground="#808080" Cursor="Hand"
+                        Click="CloseBtn_Click"/>
+            </DockPanel>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,16,0,0">
+                <TextBlock x:Name="DescText" FontSize="14" Foreground="#3C3C3C"
+                           TextWrapping="Wrap"/>
+            </ScrollViewer>
+
+            <WrapPanel Grid.Row="2" Margin="0,12,0,0" x:Name="KeyPanel"/>
+
+            <Button x:Name="StartBtn" Grid.Row="3" Content="开始冒险"
+                    Width="180" Height="44" Margin="0,20,0,0"
+                    HorizontalAlignment="Center"
+                    Background="#0067C0" Foreground="White" BorderThickness="0"
+                    FontSize="15" FontWeight="Bold"
+                    Click="StartBtn_Click"/>
+        </Grid>
+    </Border>
+</Window>

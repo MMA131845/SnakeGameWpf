@@ -10,7 +10,7 @@ https://img.shields.io/badge/platform-Windows-0078D4?style=for-the-badge&logo=wi
 
 五种游戏模式 | 局域网联机 | 主题系统 | 成就体系 | 全局自绘 UI
 
-功能特性 | 游戏模式 | 快速开始 | 操作指南 | 项目结构
+功能特性 | 游戏模式 | 快速开始 | 操作指南 | 项目结构 | 技术亮点
 
 </div>
 项目简介
@@ -39,6 +39,7 @@ AES-256 加密存档：配置、成就、排行榜全部加密存储
 核心亮点
 <table> <tr> <td width="50%">
 现代化界面
+
 全局 WPF 自绘渲染
 
 窗口几何自动保存恢复
@@ -51,6 +52,7 @@ AES-256 加密存档：配置、成就、排行榜全部加密存储
 
 </td> <td width="50%">
 游戏系统
+
 五模式差异化 AI 行为树
 
 实时排行榜（每 10 帧刷新）
@@ -63,6 +65,7 @@ AES-256 加密存档：配置、成就、排行榜全部加密存储
 
 </td> </tr> <tr> <td width="50%">
 局域网联机
+
 基于 TCP 的自研游戏服务器
 
 主机 / 加入双模式
@@ -73,6 +76,7 @@ JSON 状态同步（33ms 帧间隔）
 
 </td> <td width="50%">
 技术架构
+
 模式基类 GameModeBase 插件化
 
 AES-256 存档加密 (SecureStorage)
@@ -94,7 +98,7 @@ Named Pipe IPC 状态上报
 
 撞敌人身体或世界边界即失败
 
-淘汰之王 (Timed) — v7.0.0 重磅重做
+淘汰之王 (Timed) - v7.0.0 重磅重做
 接近《地平线 6》淘汰之王玩法。
 
 49 名 AI + 你 = 50 人局
@@ -218,52 +222,52 @@ text
 SnakeGame/
 │
 ├── 核心引擎
-│   ├── MainWindow.xaml(.cs)         主窗口：自绘 UI + 游戏主循环
-│   ├── GameEngine.cs                联机版游戏引擎
-│   ├── GameModeBase.cs              游戏模式抽象基类
-│   └── Models.cs                    Enemy / Food / Achievement / GameStats
+│   ├── MainWindow.xaml(.cs)          主窗口：自绘 UI + 游戏主循环
+│   ├── GameEngine.cs                 联机版游戏引擎
+│   ├── GameModeBase.cs               游戏模式抽象基类
+│   └── Models.cs                     Enemy / Food / Achievement / GameStats
 │
 ├── 游戏模式（插件式）
-│   ├── ClassicMode.cs               经典模式
-│   ├── TimedMode.cs                 淘汰之王
-│   ├── TeamMode.cs                  占领模式 4v4
-│   ├── ExtremeMode.cs               极限模式
-│   └── ExtractionMode.cs            搜打撤
+│   ├── ClassicMode.cs                经典模式
+│   ├── TimedMode.cs                  淘汰之王
+│   ├── TeamMode.cs                   占领模式 4v4
+│   ├── ExtremeMode.cs                极限模式
+│   └── ExtractionMode.cs             搜打撤
 │
 ├── 渲染层
-│   ├── RenderResources.cs           Brush / Pen / Typeface / Text 缓存池
+│   ├── RenderResources.cs            Brush / Pen / Typeface / Text 缓存池
 │   └── (所有 UI 由 MainWindow 自绘)
 │
 ├── 网络层
-│   ├── GameServer.cs                自研游戏服务器
-│   ├── GameNetworkClient.cs         游戏客户端
-│   └── SimpleIpcClient.cs           Named Pipe 状态上报
+│   ├── GameServer.cs                 自研游戏服务器
+│   ├── GameNetworkClient.cs          游戏客户端
+│   └── SimpleIpcClient.cs            Named Pipe 状态上报
 │
 ├── 数据层
-│   ├── AppSettings.cs               配置模型 + 序列化
-│   ├── SecureStorage.cs             AES-256 加密存储
-│   └── Models.cs                    数据模型
+│   ├── AppSettings.cs                配置模型 + 序列化
+│   ├── SecureStorage.cs              AES-256 加密存储
+│   └── Models.cs                     数据模型
 │
 ├── 独立窗口（保留兼容）
-│   ├── SettingsWindow.xaml(.cs)     设置（新版已内嵌主窗口）
-│   ├── RankingsWindow.xaml(.cs)     排行榜
-│   ├── AchievementsWindow.xaml(.cs) 成就
-│   ├── OnlineLobbyWindow.xaml(.cs)  联机大厅
-│   └── TutorialWindow.xaml(.cs)     首次教程
+│   ├── SettingsWindow.xaml(.cs)      设置（新版已内嵌主窗口）
+│   ├── RankingsWindow.xaml(.cs)      排行榜
+│   ├── AchievementsWindow.xaml(.cs)  成就
+│   ├── OnlineLobbyWindow.xaml(.cs)   联机大厅
+│   └── TutorialWindow.xaml(.cs)      首次教程
 │
 ├── 项目配置
-│   ├── SnakeGame.csproj             SDK 风格（.NET 10）
-│   ├── SnakeGameWpf.csproj          传统风格（.NET Framework 4.8）
-│   ├── App.xaml(.cs)                应用入口 + 全局渲染设置
-│   └── app.manifest                 DPI 感知清单
+│   ├── SnakeGame.csproj              SDK 风格（.NET 10）
+│   ├── SnakeGameWpf.csproj           传统风格（.NET Framework 4.8）
+│   ├── App.xaml(.cs)                 应用入口 + 全局渲染设置
+│   └── app.manifest                  DPI 感知清单
 │
 └── 存档文件（运行时生成）
-    ├── app_settings_wpf.json        加密的应用设置
-    ├── achievements.json            加密的成就进度
-    ├── timed_scores.json            加密的历史排行榜
-    ├── player_name.txt              加密的玩家名
-    ├── tutorial_<mode>.txt          教程已读标记
-    └── ~/.snake_version_wpf         版本记录（用户目录）
+    ├── app_settings_wpf.json         加密的应用设置
+    ├── achievements.json             加密的成就进度
+    ├── timed_scores.json             加密的历史排行榜
+    ├── player_name.txt               加密的玩家名
+    ├── tutorial_<mode>.txt           教程已读标记
+    └── ~/.snake_version_wpf          版本记录（用户目录）
 技术亮点
 1. 全自绘 UI 架构
 传统 WPF 使用 XAML 控件树，本项目将所有 UI 绘制集中在 MainWindow.OnRender()：
@@ -289,7 +293,7 @@ protected override void OnRender(DrawingContext dc)
 RenderResources.cs 提供全局线程安全缓存：
 
 csharp
-// Brush 缓存：uint 颜色值 → Frozen Brush
+// Brush 缓存：uint 颜色值 -> Frozen Brush
 public static SolidColorBrush Brush(byte a, byte r, byte g, byte b)
 {
     uint key = ((uint)a << 24) | ((uint)r << 16) | ((uint)g << 8) | b;

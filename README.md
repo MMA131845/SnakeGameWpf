@@ -217,57 +217,6 @@ O	主菜单：局域网联机
 
 连接成功后双方进入游戏，服务器每 33ms 广播一次游戏状态。
 
-项目结构
-text
-SnakeGame/
-│
-├── 核心引擎
-│   ├── MainWindow.xaml(.cs)          主窗口：自绘 UI + 游戏主循环
-│   ├── GameEngine.cs                 联机版游戏引擎
-│   ├── GameModeBase.cs               游戏模式抽象基类
-│   └── Models.cs                     Enemy / Food / Achievement / GameStats
-│
-├── 游戏模式（插件式）
-│   ├── ClassicMode.cs                经典模式
-│   ├── TimedMode.cs                  淘汰之王
-│   ├── TeamMode.cs                   占领模式 4v4
-│   ├── ExtremeMode.cs                极限模式
-│   └── ExtractionMode.cs             搜打撤
-│
-├── 渲染层
-│   ├── RenderResources.cs            Brush / Pen / Typeface / Text 缓存池
-│   └── (所有 UI 由 MainWindow 自绘)
-│
-├── 网络层
-│   ├── GameServer.cs                 自研游戏服务器
-│   ├── GameNetworkClient.cs          游戏客户端
-│   └── SimpleIpcClient.cs            Named Pipe 状态上报
-│
-├── 数据层
-│   ├── AppSettings.cs                配置模型 + 序列化
-│   ├── SecureStorage.cs              AES-256 加密存储
-│   └── Models.cs                     数据模型
-│
-├── 独立窗口（保留兼容）
-│   ├── SettingsWindow.xaml(.cs)      设置（新版已内嵌主窗口）
-│   ├── RankingsWindow.xaml(.cs)      排行榜
-│   ├── AchievementsWindow.xaml(.cs)  成就
-│   ├── OnlineLobbyWindow.xaml(.cs)   联机大厅
-│   └── TutorialWindow.xaml(.cs)      首次教程
-│
-├── 项目配置
-│   ├── SnakeGame.csproj              SDK 风格（.NET 10）
-│   ├── SnakeGameWpf.csproj           传统风格（.NET Framework 4.8）
-│   ├── App.xaml(.cs)                 应用入口 + 全局渲染设置
-│   └── app.manifest                  DPI 感知清单
-│
-└── 存档文件（运行时生成）
-    ├── app_settings_wpf.json         加密的应用设置
-    ├── achievements.json             加密的成就进度
-    ├── timed_scores.json             加密的历史排行榜
-    ├── player_name.txt               加密的玩家名
-    ├── tutorial_<mode>.txt           教程已读标记
-    └── ~/.snake_version_wpf          版本记录（用户目录）
 技术亮点
 1. 全自绘 UI 架构
 传统 WPF 使用 XAML 控件树，本项目将所有 UI 绘制集中在 MainWindow.OnRender()：
